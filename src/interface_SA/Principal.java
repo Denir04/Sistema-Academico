@@ -343,18 +343,24 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void turnAllTextFields(boolean bool){
+        txt_codigo.setEnabled(bool);
+        txt_nome.setEnabled(bool);
+        txt_curso.setEnabled(bool);
+        txt_endereco.setEnabled(bool);
+        txt_sexo.setEnabled(bool);
+        txt_disciplina.setEnabled(bool);
+    }
+    private void turnAllButtons(boolean bool){
+        btn_OK.setEnabled(bool);
+        btn_listar.setEnabled(bool);
+        btn_limpar.setEnabled(bool);
+    }
     private void rb_professorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_professorActionPerformed
-        // TODO add your handling code here:
-        txt_codigo.setEnabled(true);
-        txt_nome.setEnabled(true);
-        txt_curso.setEnabled(true);
-        txt_endereco.setEnabled(true);
-        txt_sexo.setEnabled(true);
-        txt_disciplina.setEnabled(true);
-        btn_OK.setEnabled(true);
-        btn_listar.setEnabled(true);
-        btn_limpar.setEnabled(true);
+        if(rb_cadastrar.isSelected()){
+            turnAllTextFields(true);
+            turnAllButtons(true);
+        }
     }//GEN-LAST:event_rb_professorActionPerformed
 
     private void txt_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cursoActionPerformed
@@ -378,12 +384,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_rb_alterarActionPerformed
 
     private void rb_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_cadastrarActionPerformed
-        // TODO add your handling code here:
+        if(rb_aluno.isSelected()){
+            turnAllTextFields(true);
+            txt_disciplina.setEnabled(false);
+        }else if(rb_professor.isSelected()){
+            turnAllTextFields(true);
+        }
     }//GEN-LAST:event_rb_cadastrarActionPerformed
 
     private void rb_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_excluirActionPerformed
-        // TODO add your handling code here:
-        
+        if(rb_aluno.isSelected() || rb_professor.isSelected()){
+            turnAllTextFields(false);
+            txt_codigo.setEnabled(true);
+        }
     }//GEN-LAST:event_rb_excluirActionPerformed
 
     private void rb_procurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_procurarActionPerformed
@@ -398,7 +411,8 @@ public class Principal extends javax.swing.JFrame {
                                       txt_sexo.getText(),
                                       txt_endereco.getText(),
                                       txt_curso.getText());
-                sisa.cadastrar(alu);
+                if(rb_cadastrar.isSelected())sisa.cadastrar(alu);
+                else if(rb_excluir.isSelected())sisa.excluir(alu);
             }else if(rb_professor.isSelected()){
                 Professor prof = new Professor(txt_codigo.getText(),
                                       txt_nome.getText(),
@@ -406,7 +420,8 @@ public class Principal extends javax.swing.JFrame {
                                       txt_endereco.getText(),
                                       txt_curso.getText(),
                                       txt_disciplina.getText());
-                sisa.cadastrar(prof);
+                if(rb_cadastrar.isSelected())sisa.cadastrar(prof);
+                else if(rb_excluir.isSelected())sisa.excluir(prof);
             }
     }//GEN-LAST:event_btn_OKActionPerformed
 
@@ -415,17 +430,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_nomeActionPerformed
 
     private void rb_alunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_alunoActionPerformed
-        // TODO add your handling code here:
-        txt_codigo.setEnabled(true);
-        txt_nome.setEnabled(true);
-        txt_curso.setEnabled(true);
-        txt_endereco.setEnabled(true);
-        txt_sexo.setEnabled(true);
-        txt_disciplina.setEnabled(false);
-        txt_disciplina.setText(null);
-        btn_OK.setEnabled(true);
-        btn_listar.setEnabled(true);
-        btn_limpar.setEnabled(true);
+        if(rb_cadastrar.isSelected()){
+            turnAllTextFields(true);
+            txt_disciplina.setEnabled(false);
+            txt_disciplina.setText(null);
+            turnAllButtons(true);
+        }else if(rb_excluir.isSelected()){
+            turnAllTextFields(false);
+            txt_codigo.setEnabled(true);
+            txt_disciplina.setText(null);
+            turnAllButtons(true);
+        }
     }//GEN-LAST:event_rb_alunoActionPerformed
 
     private void btn_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarActionPerformed

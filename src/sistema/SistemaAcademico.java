@@ -13,19 +13,35 @@ public class SistemaAcademico {
 
     public void cadastrar(Aluno alu){
         listaAlunos.add(alu);
-        JOptionPane.showMessageDialog(null,"Aluno cadastrado com sucesso");
+        JOptionPane.showMessageDialog(null,"Aluno(a) cadastrado(a) com sucesso");
     }
     
     public void cadastrar(Professor prof){
         listaProfs.add(prof);
-        JOptionPane.showMessageDialog(null,"Professor cadastrado com sucesso");
+        JOptionPane.showMessageDialog(null,"Professor(a) cadastrado(a) com sucesso");
     }
     
     public void excluir(Aluno alu){
-        listaAlunos.remove(alu);
-        JOptionPane.showMessageDialog(null,"Aluno removido com sucesso");
+        int i;
+        for(i=0;i<listaAlunos.size();i++){
+            if((alu.getCodigo()).equals(listaAlunos.get(i).getCodigo())){
+                listaAlunos.remove(i);
+                JOptionPane.showMessageDialog(null,"Aluno(a) removido(a) com sucesso");
+            }
+        }
+        if(i==listaAlunos.size()) JOptionPane.showMessageDialog(null,"Aluno(a) não encontrado(a) no sistema");
     }
-   
+    public void excluir(Professor prof){
+        int i;
+        for(i=0;i<listaProfs.size();i++){
+            if((prof.getCodigo()).equals(listaProfs.get(i).getCodigo())){
+                listaProfs.remove(i);
+                JOptionPane.showMessageDialog(null,"Professor(a) removido(a) com sucesso");
+            }
+        }
+        if(i==listaProfs.size()) JOptionPane.showMessageDialog(null,"Professor(a) não encontrado(a) no sistesma");
+    }
+    
     public void listarAlunos(){
         if(listaAlunos.isEmpty()) JOptionPane.showMessageDialog(null,"Não há nenhum aluno no sistema");
         for(Aluno alu : listaAlunos){
