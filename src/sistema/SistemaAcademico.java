@@ -22,24 +22,29 @@ public class SistemaAcademico {
     }
     
     public void excluir(Aluno alu){
-        int i;
-        for(i=0;i<listaAlunos.size();i++){
+        boolean removed = false;
+        for(int i=0;i<listaAlunos.size();i++){
             if((alu.getCodigo()).equals(listaAlunos.get(i).getCodigo())){
                 listaAlunos.remove(i);
+                removed=true;
                 JOptionPane.showMessageDialog(null,"Aluno(a) removido(a) com sucesso");
             }
         }
-        if(i==listaAlunos.size()) JOptionPane.showMessageDialog(null,"Aluno(a) não encontrado(a) no sistema");
+        if(removed==false) JOptionPane.showMessageDialog(null,"Aluno(a) não encontrado(a) no sistema");
     }
     public void excluir(Professor prof){
-        int i;
-        for(i=0;i<listaProfs.size();i++){
+        boolean removed = false;
+        for(int i=0;i<listaProfs.size();i++){
             if((prof.getCodigo()).equals(listaProfs.get(i).getCodigo())){
                 listaProfs.remove(i);
+                removed=true;
                 JOptionPane.showMessageDialog(null,"Professor(a) removido(a) com sucesso");
             }
         }
-        if(i==listaProfs.size()) JOptionPane.showMessageDialog(null,"Professor(a) não encontrado(a) no sistesma");
+        if(removed==false) JOptionPane.showMessageDialog(null,"Professor(a) não encontrado(a) no sistema");
+    } 
+    public Aluno procurar(Aluno alu){
+        return alu;
     }
     
     public void listarAlunos(){
