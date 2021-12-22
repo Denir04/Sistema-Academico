@@ -43,8 +43,31 @@ public class SistemaAcademico {
         }
         if(removed==false) JOptionPane.showMessageDialog(null,"Professor(a) não encontrado(a) no sistema");
     } 
-    public Aluno procurar(Aluno alu){
-        return alu;
+    public void procurar(Aluno alu){
+        boolean found=false;
+        for(Aluno alu2 : listaAlunos){
+            if(alu.getCodigo().equals(alu2.getCodigo())){
+                found=true;
+                String msg = "\nRA: "+alu2.getCodigo();
+                msg+="\nNome: "+alu2.getNome();
+                msg+="\nCurso: "+alu2.getCurso();
+                JOptionPane.showMessageDialog(null, msg,"Informações do Aluno", 1);
+            }
+        }
+        if(found==false) JOptionPane.showMessageDialog(null,"Aluno(a) inexistente");
+    }
+    public void procurar(Professor prof){
+        boolean found=false;
+        for(Professor prof2 : listaProfs){
+            if(prof.getCodigo().equals(prof2.getCodigo())){
+                found=true;
+                String msg = "\nRA: "+prof2.getCodigo();
+                msg+="\nNome: "+prof2.getNome();
+                msg+="\nCurso: "+prof2.getCursos();
+                JOptionPane.showMessageDialog(null, msg,"Informações do Professor", 1);
+            }
+        }
+        if(found==false) JOptionPane.showMessageDialog(null,"Professor(a) inexistente");
     }
     
     public void listarAlunos(){

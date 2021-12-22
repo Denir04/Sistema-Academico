@@ -356,9 +356,14 @@ public class Principal extends javax.swing.JFrame {
         btn_listar.setEnabled(bool);
         btn_limpar.setEnabled(bool);
     }
+    
     private void rb_professorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_professorActionPerformed
         if(rb_cadastrar.isSelected()){
             turnAllTextFields(true);
+            turnAllButtons(true);
+        }else{
+            turnAllTextFields(false);
+            txt_codigo.setEnabled(true);
             turnAllButtons(true);
         }
     }//GEN-LAST:event_rb_professorActionPerformed
@@ -400,11 +405,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_rb_excluirActionPerformed
 
     private void rb_procurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_procurarActionPerformed
-        // TODO add your handling code here:
+        if(rb_aluno.isSelected() || rb_professor.isSelected()){
+            turnAllTextFields(false);
+            txt_codigo.setEnabled(true);
+        }
     }//GEN-LAST:event_rb_procurarActionPerformed
 
     private void btn_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_OKActionPerformed
-
             if(rb_aluno.isSelected()){
                 Aluno alu = new Aluno(txt_codigo.getText(),
                                       txt_nome.getText(),
@@ -413,6 +420,7 @@ public class Principal extends javax.swing.JFrame {
                                       txt_curso.getText());
                 if(rb_cadastrar.isSelected())sisa.cadastrar(alu);
                 else if(rb_excluir.isSelected())sisa.excluir(alu);
+                else if(rb_procurar.isSelected())sisa.procurar(alu);
             }else if(rb_professor.isSelected()){
                 Professor prof = new Professor(txt_codigo.getText(),
                                       txt_nome.getText(),
@@ -422,6 +430,7 @@ public class Principal extends javax.swing.JFrame {
                                       txt_disciplina.getText());
                 if(rb_cadastrar.isSelected())sisa.cadastrar(prof);
                 else if(rb_excluir.isSelected())sisa.excluir(prof);
+                else if(rb_procurar.isSelected())sisa.procurar(prof);
             }
     }//GEN-LAST:event_btn_OKActionPerformed
 
