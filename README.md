@@ -1,6 +1,6 @@
 # Sistema-Academico 🏫
 - Este é um sistema que começou na minha faculdade e eu decidi continuar trabalhando nele para incrementalo com novas ideias.
-- Ele é um sistema escolar para cadastro(feito), exclusão(feito), pesquisa(ainda não)  e alterção(ainda não).
+- Ele é um sistema escolar para cadastro(feito), exclusão(feito), pesquisa(feito)  e alterção(ainda não).
 
 - Aqui temos a interface do sistema:
 
